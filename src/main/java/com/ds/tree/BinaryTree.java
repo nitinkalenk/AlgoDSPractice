@@ -109,6 +109,14 @@ public class BinaryTree {
     }
   }
 
+  public static boolean isBST(int leftRange, int rightRange, Node root) {
+    if (root == null)
+      return true;
+    if (root.value < leftRange || root.value > rightRange)
+      return false;
+    return isBST(leftRange, root.value - 1, root.left) && isBST(root.value + 1, rightRange, root.right);
+  }
+
   public static void main(String[] args) {
     Node root = new Node(1);
     Node node2 = new Node(2);
@@ -135,8 +143,9 @@ public class BinaryTree {
     System.out.println();
 
     bfs(root);
-    */
     iterativeInOrder(root);
+     */
+
 
   }
 
