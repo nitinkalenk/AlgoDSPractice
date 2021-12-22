@@ -1,5 +1,9 @@
 package com.ds.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class BinaryTree {
 
   static class Node {
@@ -36,6 +40,41 @@ public class BinaryTree {
     System.out.print(root.value + " ");
   }
 
+  public static void iterativePreOrder(Node root) {
+    Stack<Node> stack = new Stack<>();
+    stack.push(root);
+
+    while (!stack.isEmpty()) {
+      Node top = stack.pop();
+      System.out.print(top.value + " ");
+      if (top.right != null)
+        stack.push(top.right);
+      if (top.left != null)
+        stack.push(top.left);
+    }
+  }
+
+  public static void iterativeInOrder(Node root) {
+    Stack<Node> stack = new Stack<>();
+    stack.push(root);
+
+    while (!stack.isEmpty()) {
+      Node top = stack.pop();
+      if(top.left == null && top.right == null)
+        System.out.print(top.value + " ");
+      else if (top.left == null) {
+       stack.push(top.right);
+       top.right = null;
+       stack.push(top);
+      } else {
+        Node leftNode = top.left;
+        top.left = null;
+        stack.push(top);
+        stack.push(leftNode);
+      }
+    }
+  }
+
   public static int height(Node root) {
     if (root == null)
       return 0;
@@ -52,18 +91,35 @@ public class BinaryTree {
     root.right = left;
   }
 
+  public static void bfs(Node root) {
+    Queue<Node> queue = new LinkedList<>();
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      Node node = queue.remove();
+      int size = queue.size();
+      while (size-- != 0) {
+        System.out.print(node.value + " ");
+        if (node.left != null)
+          queue.add(node.left);
+        if (node.right != null)
+          queue.add(node.right);
+      }
+      System.out.println();
+    }
+  }
+
   public static void main(String[] args) {
     Node root = new Node(1);
     Node node2 = new Node(2);
     Node node3 = new Node(3);
     Node node4 = new Node(4);
     Node node5 = new Node(5);
-    Node node6 = new Node(6);
-    Node node7 = new Node(7);
     root.left = node2;
     root.right = node3;
     node2.left = node4;
     node2.right = node5;
+    /*
     inOrder(root);
     System.out.println();
     preOrder(root);
@@ -76,6 +132,11 @@ public class BinaryTree {
 
     invert(root);
     inOrder(root);
+    System.out.println();
+
+    bfs(root);
+    */
+    iterativeInOrder(root);
 
   }
 
