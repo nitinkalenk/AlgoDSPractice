@@ -6,7 +6,7 @@ public class HouseRobber {
 
   // https://leetcode.com/problems/house-robber/submissions/
   private int rob(int houseNo, int[] moneyArr, int[] dp) {
-    if(houseNo < 0 || houseNo >= moneyArr.length) {
+    if(houseNo >= moneyArr.length) {
       return 0;
     }
     if (dp[houseNo] != -1) {
