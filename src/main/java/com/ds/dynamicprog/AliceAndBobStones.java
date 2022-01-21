@@ -12,7 +12,7 @@ public class AliceAndBobStones {
   }
 
   public static void main(String[] args) {
-    int[] stones = { 1, 2, 4, 7, 8 };
+    int[] stones = { 1, 2, 4, 7 }; // alice will always win if stones array length
     int ans = game(0, stones.length -1, stones);
     if (ans > 0) {
       System.out.println("Alice Won");
