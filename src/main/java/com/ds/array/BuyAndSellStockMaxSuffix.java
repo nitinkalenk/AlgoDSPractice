@@ -18,7 +18,7 @@ public class BuyAndSellStockMaxSuffix {
     for(int i = 0; i < prices.length - 1; i++) {
       maxProfit = Math.max(maxProfit, maxSuffixArr[i + 1] - prices[i]);
     }
-    return maxProfit * 2;
+    return maxProfit * 4;
   }
 
 
