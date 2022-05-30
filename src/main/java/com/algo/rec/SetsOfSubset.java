@@ -21,4 +21,15 @@ public class SetsOfSubset {
     return ans;
   }
 
+  public static void main(String[] args) {
+    runBinEquiLoop(8);
+  }
+
+  private static void runBinEquiLoop(int num) {
+    while (num != 0) {
+      System.out.println("Run");
+      num = num >> 1;
+    }
+  }
+
 }
